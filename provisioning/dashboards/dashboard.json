@@ -1,0 +1,216 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "anomalyThreshold": 0.2,
+        "primarySeriesName": "",
+        "showStats": true,
+        "showTrend": true,
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "raw_frame",
+          "rawFrameContent": "[\n  {\n    \"schema\": {\n      \"name\": \"CPU usage\",\n      \"fields\": [\n        {\n          \"name\": \"Time\",\n          \"type\": \"time\"\n        },\n        {\n          \"name\": \"Value\",\n          \"type\": \"number\"\n        }\n      ]\n    },\n    \"data\": {\n      \"values\": [\n        [1609459200000, 1609462800000, 1609466400000, 1609470000000, 1609473600000, 1609477200000, 1609480800000, 1609484400000, 1609488000000],\n        [10, 12, 11, 13, 30, 12, 11, 25, 12]\n      ]\n    }\n  }\n]"
+        }
+      ],
+      "title": "Deterministic Analytics",
+      "type": "sarika-smart-analytics-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "anomalyThreshold": 0.2,
+        "primarySeriesName": "",
+        "showStats": true,
+        "showTrend": true,
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "no_data_points"
+        }
+      ],
+      "title": "No Data Scenario",
+      "type": "sarika-smart-analytics-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 3,
+      "options": {
+        "anomalyThreshold": 0.2,
+        "primarySeriesName": "",
+        "showStats": true,
+        "showTrend": true,
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "random_walk"
+        }
+      ],
+      "title": "Random Walk Scenario",
+      "type": "sarika-smart-analytics-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "anomalyThreshold": 0.2,
+        "primarySeriesName": "",
+        "showStats": true,
+        "showTrend": true,
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "raw_frame",
+          "rawFrameContent": "[\n  {\n    \"schema\": {\n      \"name\": \"Series A\",\n      \"fields\": [\n        {\n          \"name\": \"Time\",\n          \"type\": \"time\"\n        },\n        {\n          \"name\": \"Value\",\n          \"type\": \"number\"\n        }\n      ]\n    },\n    \"data\": {\n      \"values\": [\n        [1609459200000, 1609462800000, 1609466400000, 1609470000000, 1609473600000],\n        [10, 12, 14, 16, 18]\n      ]\n    }\n  },\n  {\n    \"schema\": {\n      \"name\": \"Series B\",\n      \"fields\": [\n        {\n          \"name\": \"Time\",\n          \"type\": \"time\"\n        },\n        {\n          \"name\": \"Value\",\n          \"type\": \"number\"\n        }\n      ]\n    },\n    \"data\": {\n      \"values\": [\n        [1609459200000, 1609462800000, 1609466400000, 1609470000000, 1609473600000],\n        [18, 16, 14, 12, 10]\n      ]\n    }\n  },\n  {\n    \"schema\": {\n      \"name\": \"Series C\",\n      \"fields\": [\n        {\n          \"name\": \"Time\",\n          \"type\": \"time\"\n        },\n        {\n          \"name\": \"Value\",\n          \"type\": \"number\"\n        }\n      ]\n    },\n    \"data\": {\n      \"values\": [\n        [1609459200000, 1609462800000, 1609466400000, 1609470000000, 1609473600000],\n        [12, 13, 12, 13, 12]\n      ]\n    }\n  }\n]"
+        }
+      ],
+      "title": "Multi Series Scenario",
+      "type": "sarika-smart-analytics-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 5,
+      "options": {
+        "anomalyThreshold": 0.2,
+        "primarySeriesName": "",
+        "showStats": true,
+        "showTrend": true,
+        "seriesCountSize": "sm",
+        "showSeriesCount": false,
+        "text": "Default value of text input option"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "raw_frame",
+          "rawFrameContent": "[\n  {\n    \"schema\": {\n      \"name\": \"Single Point\",\n      \"fields\": [\n        {\n          \"name\": \"Time\",\n          \"type\": \"time\"\n        },\n        {\n          \"name\": \"Value\",\n          \"type\": \"number\"\n        }\n      ]\n    },\n    \"data\": {\n      \"values\": [\n        [1609459200000],\n        [42]\n      ]\n    }\n  }\n]"
+        }
+      ],
+      "title": "Single Point Scenario",
+      "type": "sarika-smart-analytics-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Provisioned smart-analytics dashboard",
+  "uid": "a538aeff-5a8a-42a5-901c-938d896fdd6f",
+  "version": 1,
+  "weekStart": ""
+}
