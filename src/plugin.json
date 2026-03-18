@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "Smart Analytics Panel",
-  "id": "sarika-smart-analytics-panel",
+  "id": "sarika1731-smartanalytics-panel",
   "info": {
     "keywords": ["panel", "analytics", "anomaly detection", "timeseries"],
     "description": "A Grafana panel plugin that visualizes time-series data and provides trend, stats, and anomaly insights.",
@@ -14,7 +14,12 @@
       "large": "img/logo.svg"
     },
     "links": [],
-    "screenshots": [],
+    "screenshots": [
+      {
+        "name": "Smart Analytics Panel",
+        "path": "img/screenshot.png"
+      }
+    ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },

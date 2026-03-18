@@ -5,7 +5,6 @@
  * https://grafana.com/developers/plugin-tools/how-to-guides/extend-configurations#extend-the-webpack-config
  */
 
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import path from 'path';
@@ -17,6 +16,7 @@ import LiveReloadPlugin from 'webpack-livereload-plugin';
 import VirtualModulesPlugin from 'webpack-virtual-modules';
 
 import { BuildModeWebpackPlugin } from './BuildModeWebpackPlugin.ts';
+import { LocalCopyWebpackPlugin } from './LocalCopyWebpackPlugin.ts';
 import { DIST_DIR, SOURCE_DIR } from '../bundler/constants.ts';
 import { getCPConfigVersion, getEntries, getPackageJson, getPluginJson, hasReadme, isWSL } from '../bundler/utils.ts';
 import { externals } from '../bundler/externals.ts';
@@ -167,7 +167,7 @@ const config = async (env: Env): Promise<Configuration> => {
         raw: true,
         entryOnly: true,
       }),
-      new CopyWebpackPlugin({
+      new LocalCopyWebpackPlugin({
         patterns: copyFilePatterns,
       }),
       // Replace certain template-variables in the README and plugin.json

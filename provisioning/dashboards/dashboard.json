@@ -55,7 +55,7 @@
         }
       ],
       "title": "Deterministic Analytics",
-      "type": "sarika-smart-analytics-panel"
+      "type": "sarika1731-smartanalytics-panel"
     },
     {
       "datasource": {
@@ -90,7 +90,7 @@
         }
       ],
       "title": "No Data Scenario",
-      "type": "sarika-smart-analytics-panel"
+      "type": "sarika1731-smartanalytics-panel"
     },
     {
       "datasource": {
@@ -124,7 +124,7 @@
         }
       ],
       "title": "Random Walk Scenario",
-      "type": "sarika-smart-analytics-panel"
+      "type": "sarika1731-smartanalytics-panel"
     },
     {
       "datasource": {
@@ -159,7 +159,7 @@
         }
       ],
       "title": "Multi Series Scenario",
-      "type": "sarika-smart-analytics-panel"
+      "type": "sarika1731-smartanalytics-panel"
     },
     {
       "datasource": {
@@ -194,7 +194,7 @@
         }
       ],
       "title": "Single Point Scenario",
-      "type": "sarika-smart-analytics-panel"
+      "type": "sarika1731-smartanalytics-panel"
     }
   ],
   "refresh": "",
