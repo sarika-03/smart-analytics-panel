@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { FieldType, LoadingState, PanelProps } from '@grafana/data';
+import { FieldType, GrafanaTheme2, LoadingState, PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2, useTheme2 } from '@grafana/ui';
@@ -51,19 +51,14 @@ const CHART_PADDING = 16;
 const SUMMARY_CARD_MIN_WIDTH = 130;
 const MOVING_AVERAGE_WINDOW = 5;
 
-const getStyles = (theme: ReturnType<typeof useTheme2>) => {
-  const getSpacing = (multiplier: number) => {
-    const spacingFn = (theme as any).spacing;
-    return typeof spacingFn === 'function' ? spacingFn(multiplier) : `${multiplier * 8}px`;
-  };
-
+const getStyles = (theme: GrafanaTheme2) => {
   return {
     wrapper: css`
-      font-family: Open Sans, sans-serif;
+      font-family: ${theme.typography.fontFamily};
       display: flex;
       flex-direction: column;
-      gap: ${getSpacing(1)};
-      padding: ${getSpacing(1)};
+      gap: ${theme.spacing(1)};
+      padding: ${theme.spacing(1)};
       box-sizing: border-box;
       background: ${theme.colors.background.primary};
       color: ${theme.colors.text.primary};
@@ -79,13 +74,13 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
       text-align: center;
       border: 1px dashed ${theme.colors.border.medium};
       border-radius: 8px;
-      padding: ${getSpacing(1.5)};
+      padding: ${theme.spacing(1.5)};
       background: ${theme.colors.background.secondary};
       transition: border-color 150ms ease, background-color 150ms ease;
     `,
     sectionCard: css`
       border-radius: 8px;
-      padding: ${getSpacing(1)};
+      padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.medium};
       background: ${theme.colors.background.secondary};
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
@@ -101,21 +96,21 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     sectionTitle: css`
       font-size: 14px;
       font-weight: 700;
-      margin-bottom: ${getSpacing(0.75)};
+      margin-bottom: ${theme.spacing(0.75)};
       letter-spacing: 0.01em;
     `,
     chartInfo: css`
       font-size: 11px;
       opacity: 0.8;
-      margin-top: ${getSpacing(0.75)};
+      margin-top: ${theme.spacing(0.75)};
     `,
     chartMeta: css`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: ${getSpacing(1)};
+      gap: ${theme.spacing(1)};
       flex-wrap: wrap;
-      margin-bottom: ${getSpacing(1)};
+      margin-bottom: ${theme.spacing(1)};
     `,
     chartFrame: css`
       position: relative;
@@ -137,7 +132,7 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
       pointer-events: none;
       transform: translate(-50%, calc(-100% - 10px));
       border-radius: 8px;
-      padding: ${getSpacing(0.75)};
+      padding: ${theme.spacing(0.75)};
       background: ${theme.colors.background.primary};
       border: 1px solid ${theme.colors.border.medium};
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
@@ -148,12 +143,12 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     summaryGrid: css`
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(${SUMMARY_CARD_MIN_WIDTH}px, 1fr));
-      gap: ${getSpacing(0.75)};
+      gap: ${theme.spacing(0.75)};
       min-width: 0;
     `,
     statCard: css`
       border-radius: 8px;
-      padding: ${getSpacing(1)};
+      padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.weak};
       background: ${theme.colors.background.primary};
       transition: transform 150ms ease, border-color 150ms ease;
@@ -161,7 +156,7 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     statLabel: css`
       font-size: 10px;
       opacity: 0.75;
-      margin-bottom: ${getSpacing(0.25)};
+      margin-bottom: ${theme.spacing(0.25)};
       text-transform: uppercase;
       letter-spacing: 0.04em;
     `,
@@ -173,12 +168,12 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     detailsRow: css`
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: ${getSpacing(0.75)};
+      gap: ${theme.spacing(0.75)};
       min-width: 0;
     `,
     detailCard: css`
       border-radius: 8px;
-      padding: ${getSpacing(1)};
+      padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.weak};
       background: ${theme.colors.background.primary};
     `,
@@ -188,7 +183,7 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     `,
     footerInfo: css`
       display: flex;
-      gap: ${getSpacing(1.5)};
+      gap: ${theme.spacing(1.5)};
       flex-wrap: wrap;
       color: ${theme.colors.text.secondary};
       font-size: 13px;
@@ -200,18 +195,18 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     fallbackText: css`
       font-size: 13px;
       color: ${theme.colors.text.secondary};
-      margin-top: ${getSpacing(1)};
+      margin-top: ${theme.spacing(1)};
     `,
     legend: css`
       display: flex;
       flex-wrap: wrap;
-      gap: ${getSpacing(1)};
-      margin-top: ${getSpacing(1)};
+      gap: ${theme.spacing(1)};
+      margin-top: ${theme.spacing(1)};
     `,
     legendItem: css`
       display: inline-flex;
       align-items: center;
-      gap: ${getSpacing(0.5)};
+      gap: ${theme.spacing(0.5)};
       min-width: 0;
       color: ${theme.colors.text.secondary};
       font-size: 11px;
@@ -225,7 +220,7 @@ const getStyles = (theme: ReturnType<typeof useTheme2>) => {
     hoverRow: css`
       display: flex;
       justify-content: space-between;
-      gap: ${getSpacing(0.75)};
+      gap: ${theme.spacing(0.75)};
       white-space: nowrap;
     `,
     hoverLabel: css`
