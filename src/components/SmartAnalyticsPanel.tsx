@@ -52,6 +52,11 @@ const SUMMARY_CARD_MIN_WIDTH = 130;
 const MOVING_AVERAGE_WINDOW = 5;
 
 const getStyles = (theme: GrafanaTheme2) => {
+  const transition = theme.transitions.create(['border-color', 'background-color', 'box-shadow']);
+  const cardRadius = theme.shape.radius.default;
+  const chartRadius = theme.shape.radius.lg;
+  const swatchRadius = theme.shape.radius.circle;
+
   return {
     wrapper: css`
       font-family: ${theme.typography.fontFamily};
@@ -73,18 +78,18 @@ const getStyles = (theme: GrafanaTheme2) => {
       justify-content: center;
       text-align: center;
       border: 1px dashed ${theme.colors.border.medium};
-      border-radius: 8px;
+      border-radius: ${cardRadius};
       padding: ${theme.spacing(1.5)};
       background: ${theme.colors.background.secondary};
-      transition: border-color 150ms ease, background-color 150ms ease;
+      transition: ${transition};
     `,
     sectionCard: css`
-      border-radius: 8px;
+      border-radius: ${cardRadius};
       padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.medium};
       background: ${theme.colors.background.secondary};
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+      box-shadow: ${theme.shadows.z1};
+      transition: ${transition};
       min-width: 0;
     `,
     chartCard: css`
@@ -94,13 +99,15 @@ const getStyles = (theme: GrafanaTheme2) => {
       min-width: 0;
     `,
     sectionTitle: css`
-      font-size: 14px;
-      font-weight: 700;
+      font-size: ${theme.typography.body.fontSize};
+      font-weight: ${theme.typography.fontWeightBold};
+      line-height: ${theme.typography.body.lineHeight};
       margin-bottom: ${theme.spacing(0.75)};
       letter-spacing: 0.01em;
     `,
     chartInfo: css`
-      font-size: 11px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      line-height: ${theme.typography.bodySmall.lineHeight};
       opacity: 0.8;
       margin-top: ${theme.spacing(0.75)};
     `,
@@ -114,7 +121,7 @@ const getStyles = (theme: GrafanaTheme2) => {
     `,
     chartFrame: css`
       position: relative;
-      border-radius: 10px;
+      border-radius: ${chartRadius};
       overflow: hidden;
       width: 100%;
       max-width: 100%;
@@ -131,14 +138,15 @@ const getStyles = (theme: GrafanaTheme2) => {
       position: absolute;
       pointer-events: none;
       transform: translate(-50%, calc(-100% - 10px));
-      border-radius: 8px;
+      border-radius: ${cardRadius};
       padding: ${theme.spacing(0.75)};
       background: ${theme.colors.background.primary};
       border: 1px solid ${theme.colors.border.medium};
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      box-shadow: ${theme.shadows.z3};
       z-index: 2;
       min-width: 110px;
-      font-size: 12px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      line-height: ${theme.typography.bodySmall.lineHeight};
     `,
     summaryGrid: css`
       display: grid;
@@ -147,23 +155,26 @@ const getStyles = (theme: GrafanaTheme2) => {
       min-width: 0;
     `,
     statCard: css`
-      border-radius: 8px;
+      border-radius: ${cardRadius};
       padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.weak};
       background: ${theme.colors.background.primary};
-      transition: transform 150ms ease, border-color 150ms ease;
+      box-shadow: ${theme.shadows.z1};
+      transition: ${theme.transitions.create(['transform', 'border-color', 'box-shadow'])};
     `,
     statLabel: css`
-      font-size: 10px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      font-weight: ${theme.typography.fontWeightMedium};
+      line-height: ${theme.typography.bodySmall.lineHeight};
       opacity: 0.75;
       margin-bottom: ${theme.spacing(0.25)};
       text-transform: uppercase;
       letter-spacing: 0.04em;
     `,
     statValue: css`
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.2;
+      font-size: ${theme.typography.h4.fontSize};
+      font-weight: ${theme.typography.h4.fontWeight};
+      line-height: ${theme.typography.h4.lineHeight};
     `,
     detailsRow: css`
       display: grid;
@@ -172,28 +183,32 @@ const getStyles = (theme: GrafanaTheme2) => {
       min-width: 0;
     `,
     detailCard: css`
-      border-radius: 8px;
+      border-radius: ${cardRadius};
       padding: ${theme.spacing(1)};
       border: 1px solid ${theme.colors.border.weak};
       background: ${theme.colors.background.primary};
+      box-shadow: ${theme.shadows.z1};
     `,
     detailText: css`
-      font-size: 12px;
-      line-height: 1.45;
+      font-size: ${theme.typography.body.fontSize};
+      line-height: ${theme.typography.body.lineHeight};
     `,
     footerInfo: css`
       display: flex;
       gap: ${theme.spacing(1.5)};
       flex-wrap: wrap;
       color: ${theme.colors.text.secondary};
-      font-size: 13px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      line-height: ${theme.typography.bodySmall.lineHeight};
     `,
     loadingText: css`
-      font-size: 15px;
-      font-weight: 600;
+      font-size: ${theme.typography.h6.fontSize};
+      font-weight: ${theme.typography.h6.fontWeight};
+      line-height: ${theme.typography.h6.lineHeight};
     `,
     fallbackText: css`
-      font-size: 13px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      line-height: ${theme.typography.bodySmall.lineHeight};
       color: ${theme.colors.text.secondary};
       margin-top: ${theme.spacing(1)};
     `,
@@ -209,12 +224,13 @@ const getStyles = (theme: GrafanaTheme2) => {
       gap: ${theme.spacing(0.5)};
       min-width: 0;
       color: ${theme.colors.text.secondary};
-      font-size: 11px;
+      font-size: ${theme.typography.bodySmall.fontSize};
+      line-height: ${theme.typography.bodySmall.lineHeight};
     `,
     legendSwatch: css`
       width: 10px;
       height: 10px;
-      border-radius: 999px;
+      border-radius: ${swatchRadius};
       flex-shrink: 0;
     `,
     hoverRow: css`
@@ -455,7 +471,7 @@ const formatTimestamp = (date: Date): string => {
   });
 };
 
-const getSeriesColor = (theme: ReturnType<typeof useTheme2>, index: number): string => {
+const getSeriesColor = (theme: GrafanaTheme2, index: number): string => {
   const palette = [
     theme.colors.primary.main,
     theme.colors.success.main,
@@ -493,8 +509,6 @@ const getTrendLabel = (trend: Trend): string => {
   return 'Trend: Stable ➖';
 };
 
-// Builds a human-readable summary from the existing analytics results.
-// The logic is rule-based so it stays predictable and easy to maintain.
 const generateInsights = (
   values: number[],
   stats: StatsResult,
@@ -537,7 +551,7 @@ const generateInsights = (
   return insightParts.join(' ');
 };
 
-export const SimplePanel: React.FC<Props> = ({ options, data, width, height, timeRange }) => {
+export const SmartAnalyticsPanel: React.FC<Props> = ({ options, data, width, height, timeRange }) => {
   const theme = useTheme2();
   const styles = useStyles2(getStyles);
   const [hoveredPoint, setHoveredPoint] = useState<HoveredPoint | null>(null);
@@ -700,6 +714,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, tim
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
             preserveAspectRatio="xMidYMid meet"
             role="img"
+            aria-label="Time series analytics chart"
             onMouseLeave={() => setHoveredPoint(null)}
           >
             {gridLines.map((y, index) => (

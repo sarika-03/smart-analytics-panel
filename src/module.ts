@@ -1,18 +1,18 @@
 import { PanelPlugin } from '@grafana/data';
 import { SimpleOptions } from './types';
-import { SimplePanel } from './components/SimplePanel';
+import { SmartAnalyticsPanel } from './components/SmartAnalyticsPanel';
 
-export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOptions((builder) => {
+export const plugin = new PanelPlugin<SimpleOptions>(SmartAnalyticsPanel).setPanelOptions((builder) => {
   return builder
     .addTextInput({
       path: 'text',
-      name: 'Simple text option',
-      description: 'Description of panel option',
-      defaultValue: 'Default value of text input option',
+      name: 'Primary label',
+      description: 'Controls panel display label.',
+      defaultValue: 'Enter label text',
     })
     .addBooleanSwitch({
       path: 'showSeriesCount',
-      name: 'Show series counter',
+      name: 'Show series count',
       defaultValue: false,
     })
     .addSliderInput({
@@ -41,27 +41,5 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
       name: 'Primary series name',
       description: 'Optional exact series name to use for trend, anomaly, and insights analysis.',
       defaultValue: '',
-    })
-    .addRadio({
-      path: 'seriesCountSize',
-      defaultValue: 'sm',
-      name: 'Series counter size',
-      settings: {
-        options: [
-          {
-            value: 'sm',
-            label: 'Small',
-          },
-          {
-            value: 'md',
-            label: 'Medium',
-          },
-          {
-            value: 'lg',
-            label: 'Large',
-          },
-        ],
-      },
-      showIf: (config) => config.showSeriesCount,
     });
 });

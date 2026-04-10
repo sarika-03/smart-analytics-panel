@@ -20,7 +20,7 @@
         "path": "img/screenshot.png"
       }
     ],
-    "version": "%VERSION%",
+    "version": "1.0.2",
     "updated": "%TODAY%"
   },
   "dependencies": {
