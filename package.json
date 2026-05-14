@@ -1,6 +1,6 @@
 {
   "name": "smart-analytics",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "build": "webpack -c ./.config/webpack/webpack.config.ts --env production",
     "dev": "webpack -w -c ./.config/webpack/webpack.config.ts --env development",
@@ -27,7 +27,7 @@
     "@testing-library/jest-dom": "^6.6.0",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^22.0.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
@@ -67,14 +67,14 @@
   "dependencies": {
     "@emotion/css": "11.10.6",
     "@grafana/data": "^12.4.1",
-    "@grafana/schema": "^12.4.0",
     "@grafana/ui": "^12.4.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
   },
   "overrides": {
-    "immutable": "4.3.5",
-    "dompurify": "3.0.8"
+    "immutable": "5.1.5",
+    "dompurify": "3.4.3",
+    "fast-uri": "3.1.2"
   },
   "packageManager": "npm@10.9.3"
 }
